@@ -9,6 +9,11 @@
     <artifactId>devops-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

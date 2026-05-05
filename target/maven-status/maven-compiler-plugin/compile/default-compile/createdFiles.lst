@@ -1,2 +1,4 @@
+com\ganpat\devops\TaskRequest.class
+com\ganpat\devops\TaskRecord.class
 com\ganpat\devops\DevopsAppApplication.class
 com\ganpat\devops\TaskController.class
