@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Task Manager</title>
+</head>
+<body>
+    <h1>🚀 DevOps Task Dashboard</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            let task = document.getElementById("taskInput").value;
+
+            fetch("/add?task=" + task)
+            .then(() => loadTasks());
+        }
+
+        function loadTasks() {
+            fetch("/tasks")
+            .then(res => res.json())
+            .then(data => {
+                let list = document.getElementById("taskList");
+                list.innerHTML = "";
+                data.forEach(t => {
+                    let li = document.createElement("li");
+                    li.innerText = t;
+                    list.appendChild(li);
+                });
+            });
+        }
+
+        window.onload = loadTasks;
+    </script>
+</body>
+</html>
