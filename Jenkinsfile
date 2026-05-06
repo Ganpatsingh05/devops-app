@@ -9,9 +9,18 @@ pipeline {
             }
         }
 
-        stage('Run Container') {
+        stage('Stop Old Container') {
             steps {
-                sh 'docker run -d -p 8087:8080 ganpatsingh05/devops-app'
+                sh '''
+                docker stop devops-container || true
+                docker rm devops-container || true
+                '''
+            }
+        }
+
+        stage('Run New Container') {
+            steps {
+                sh 'docker run -d -p 8087:8080 --name devops-container ganpatsingh05/devops-app'
             }
         }
 
